@@ -10,8 +10,8 @@ package Models;
  * @author atene
  */
 public class Node<T> {
-    T valor;
-    Node<T> siguiente;
+   public T valor;
+    public Node<T> siguiente;
 
     public Node(T valor) {
         this.valor = valor;

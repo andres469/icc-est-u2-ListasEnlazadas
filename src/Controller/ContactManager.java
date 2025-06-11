@@ -1,53 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
-
 
 import Models.Contact;
 import Models.LinkedList;
+import Models.Node;
 
-/**
- *
- * @author atene
- */
 public class ContactManager {
-     private LinkedList<Contact<?, ?>> contactos;
+    private LinkedList<Contact<?, ?>> contacts;
 
-    public Agenda() {
-        contactos = new ListaEnlazada<>();
+    public ContactManager() {
+        contacts = new LinkedList<>();
     }
 
-    public void agregarContacto(Contacto<?, ?> contacto) {
-        contactos.agregarAlFinal(contacto);
+    public void addContact(Contact<?, ?> contact) {
+        contacts.agregarAlFinal(contact);
     }
 
-    public Contacto<?, ?> buscarContactoPorNombre(String nombre) {
-        Nodo<Contacto<?, ?>> actual = contactos.cabeza;
-        while (actual != null) {
-            if (actual.valor.getNombre().toString().equalsIgnoreCase(nombre)) {
-                return actual.valor;
+    public Contact<?, ?> findContactByName(String name) {
+        Node<Contact<?, ?>> current = contacts.cabeza; // Cambiado para usar getter
+        while (current != null) {
+            if (current.valor.getNombre().toString().equalsIgnoreCase(name)) {
+                return current.valor;
             }
-            actual = actual.siguiente;
+            current = current.siguiente;
         }
         return null;
     }
 
-    public boolean eliminarContactoPorNombre(String nombre) {
-        Nodo<Contacto<?, ?>> actual = contactos.cabeza;
-        while (actual != null) {
-            if (actual.valor.getNombre().toString().equalsIgnoreCase(nombre)) {
-                return contactos.eliminarPorValor(actual.valor);
+    public boolean deleteContactByName(String name) {
+        Node<Contact<?, ?>> current = contacts.cabeza;
+        while (current != null) {
+            if (current.valor.getNombre().toString().equalsIgnoreCase(name)) {
+                return contacts.eliminarPorValor(current.valor);
             }
-            actual = actual.siguiente;
+            current = current.siguiente;
         }
         return false;
     }
 
-    public void imprimirContactos() {
-        contactos.imprimir();
+    public void printContacts() {
+        contacts.imprimir();
     }
-    
 }

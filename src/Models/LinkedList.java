@@ -10,7 +10,7 @@ package Models;
  * @author atene
  */
 public class LinkedList<T> {
-    private Node<T> cabeza;
+    public Node<T> cabeza;
     private int tamaño;
 
     public void agregarAlFinal(T valor) {
